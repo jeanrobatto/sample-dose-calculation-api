@@ -1,0 +1,16 @@
+[*.cs]
+
+# CA2007: Suggests ConfigureAwait(false) on awaited tasks. ASP.NET Core has no
+# SynchronizationContext, so this is a no-op here - only matters for library code
+# that might run in a context-sensitive host (WPF, WinForms, ASP.NET Framework).
+dotnet_diagnostic.CA2007.severity = none
+
+# CA1812: Flags internal classes that appear "never instantiated" via static analysis.
+# False positive for anything constructed through DI (AddScoped/AddSingleton) -
+# the analyzer can't see the container's internal `new` calls.
+dotnet_diagnostic.CA1812.severity = none
+
+# CA1515: Suggests making public types internal since they're not referenced
+# outside the assembly. False positive for ASP.NET Core controllers specifically -
+# they must stay public for the framework's reflection-based route discovery to find them.
+dotnet_diagnostic.CA1515.severity = none
