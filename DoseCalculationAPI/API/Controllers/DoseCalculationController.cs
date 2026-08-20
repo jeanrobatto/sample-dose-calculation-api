@@ -48,6 +48,7 @@ public class DoseCalculationsController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
     }
 
+    /// <summary>Return a dose calculation from an entry ID.</summary>
     [HttpGet("{id}")]
     public async Task<ActionResult<DoseCalculationGetResponse>> GetById(string id)
     {
@@ -61,6 +62,7 @@ public class DoseCalculationsController : ControllerBase
         return Ok(MapToResponse(document));
     }
 
+    /// <summary>Return all dose calculations stored in the database.</summary>
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<DoseCalculationGetResponse>>> GetAll()
     {
